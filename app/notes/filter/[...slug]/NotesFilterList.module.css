@@ -1,0 +1,19 @@
+.MutatingDotsWrapper {
+  margin: auto auto;
+}
+
+.noteUtilsThumb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.createNoteLinkBtn {
+  border: 1px solid white;
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: 1px solid #4f8ce7;
+
+  &:hover {
+    border: 1px solid #ddd;
+  }
+}
