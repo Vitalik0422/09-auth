@@ -1,10 +1,10 @@
 'use client';
 import css from './NoteForm.module.css';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createNote } from '@/lib/api';
 import { NoteFormData } from '@/types/note';
 import { noteDraftStore } from '@/lib/store/noteStore';
 import toast from 'react-hot-toast';
+import { createNote } from '@/lib/api/clientApi';
 
 interface NoteFormProps {
   onClose: () => void;

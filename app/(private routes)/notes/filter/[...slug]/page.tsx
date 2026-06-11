@@ -1,4 +1,3 @@
-import { fetchNotes } from '@/lib/api';
 import {
   dehydrate,
   HydrationBoundary,
@@ -7,6 +6,7 @@ import {
 import NotesFilterListClient from './Notes.client';
 import { TagType } from '@/types/note';
 import { Metadata } from 'next';
+import { fetchNotes } from '@/lib/api/clientApi';
 
 interface FilterNotesProps {
   params: Promise<{ slug: TagType }>;
@@ -39,7 +39,7 @@ export const generateMetadata = async ({
       description,
       type: 'website',
       siteName: 'NoteHub',
-      url:`/notes/filter/${activeSlug}`,
+      url: `/notes/filter/${activeSlug}`,
       images: [
         {
           url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',

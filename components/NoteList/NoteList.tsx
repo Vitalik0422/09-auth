@@ -1,10 +1,12 @@
+'use client';
 import css from './NotesList.module.css';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import NoteItem from '../NoteItem/NoteItem';
 import { Note } from '@/types/note';
-import { deleteNote } from '@/lib/api';
+
 import toast from 'react-hot-toast';
+import { deleteNote } from '@/lib/api/clientApi';
 interface NoteListProps {
   notes: Note[];
 }

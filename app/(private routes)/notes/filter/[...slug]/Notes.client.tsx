@@ -4,10 +4,12 @@ import InfoMessage from '@/components/InformMessage/InfoMessage';
 import NoteList from '@/components/NoteList/NoteList';
 import Pagination from '@/components/Pagination/Pagination';
 import SearchBox from '@/components/SearchBox/SearchBox';
-import { fetchNotes } from '@/lib/api';
+import { fetchNotes } from '@/lib/api/clientApi';
 import { TagType } from '@/types/note';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import test from 'node:test';
 import { ChangeEvent, useState } from 'react';
 import { MutatingDots } from 'react-loader-spinner';
 import { useDebounce } from 'use-debounce';
@@ -20,6 +22,7 @@ const NotesFilterListClient = ({ tag }: NotesFilterListClientProps) => {
   const [page, setPage] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [search] = useDebounce(searchQuery, 1000);
+  const router = useRouter();
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['notes', { page: page, tag: tag, search: search }],
@@ -29,6 +32,7 @@ const NotesFilterListClient = ({ tag }: NotesFilterListClientProps) => {
         : fetchNotes(search, page, 12, tag as TagType),
 
     enabled: Boolean(tag),
+    refetchOnMount: false,
     retry: false,
     placeholderData: keepPreviousData,
   });
@@ -40,8 +44,12 @@ const NotesFilterListClient = ({ tag }: NotesFilterListClientProps) => {
   const handleChangePage = (selectedItem: { selected: number }) => {
     setPage(selectedItem.selected + 1);
   };
+  const test = () => {
+    router.push('filter/coctails');
+  };
 
   const totalPages = data?.totalPages || 1;
+
   if (error) return <p>{error.message}</p>;
 
   return (
@@ -68,16 +76,19 @@ const NotesFilterListClient = ({ tag }: NotesFilterListClientProps) => {
           wrapperClass={css.MutatingDotsWrapper}
         />
       ) : data && data.notes.length > 0 ? (
-        <NoteList notes={data.notes} />
+        <>
+          <NoteList notes={data.notes} />
+          <button onClick={test}>Test</button>
+          {totalPages > 1 && (
+            <Pagination
+              page={page}
+              handleChangePage={handleChangePage}
+              totalPages={totalPages}
+            />
+          )}
+        </>
       ) : (
         <InfoMessage />
-      )}
-      {totalPages > 1 && (
-        <Pagination
-          page={page}
-          handleChangePage={handleChangePage}
-          totalPages={totalPages}
-        />
       )}
     </>
   );

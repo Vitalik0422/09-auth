@@ -14,3 +14,9 @@ export interface NoteFormData {
   content: string;
   tag: TagType;
 }
+
+//api: response, request
+export interface NotesResponse {
+  notes: Note[];
+  totalPages: number;
+}
