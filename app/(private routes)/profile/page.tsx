@@ -16,6 +16,8 @@ export const metadata: Metadata = {
     description: 'Personal profile in a NoteHub Site.',
     type: 'website',
     siteName: 'Profile | NoteHub',
+    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/profile/`,
+
     images: [
       {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',

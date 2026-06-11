@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: 'Home page in NoteHub with a description of the site.',
     type: 'website',
     siteName: 'Home | NoteHub',
+    url: process.env.NEXT_PUBLIC_BACKEND_URL,
     images: [
       {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',

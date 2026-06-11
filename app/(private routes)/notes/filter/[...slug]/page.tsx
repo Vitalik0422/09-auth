@@ -6,7 +6,7 @@ import {
 import NotesFilterListClient from './Notes.client';
 import { TagType } from '@/types/note';
 import { Metadata } from 'next';
-import { fetchNotes } from '@/lib/api/clientApi';
+import { fetchNotes } from '@/lib/api/serverApi';
 
 interface FilterNotesProps {
   params: Promise<{ slug: TagType }>;
@@ -39,7 +39,7 @@ export const generateMetadata = async ({
       description,
       type: 'website',
       siteName: 'NoteHub',
-      url: `/notes/filter/${activeSlug}`,
+      url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/notes/filter/${activeSlug}`,
       images: [
         {
           url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',

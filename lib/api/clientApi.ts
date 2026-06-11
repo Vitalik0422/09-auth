@@ -67,24 +67,24 @@ export const registerUser = async (
   const response = await instance.post<UserData>('auth/register', params);
   return response.data;
 };
-export const login = async (loginData: UserRegisterData) => {
-  const response = await instance.post('auth/login', loginData);
+export const login = async (loginData: UserRegisterData): Promise<UserData> => {
+  const response = await instance.post<UserData>('auth/login', loginData);
   return response.data;
 };
-export const logout = async () => {
-  const response = await instance.post('auth/logout');
+export const logout = async (): Promise<string> => {
+  const response = await instance.post<string>('auth/logout');
   return response.data;
 };
 export const checkSession = async (): Promise<CheckSession> => {
   const response = await instance.get<CheckSession>('auth/session');
   return response.data;
 };
-export const getMe = async () => {
-  const response = await instance.get('users/me');
+export const getMe = async (): Promise<UserData> => {
+  const response = await instance.get<UserData>('users/me');
   return response.data;
 };
-export const updateMe = async (data: UpdateUserName) => {
+export const updateMe = async (data: UpdateUserName): Promise<UserData> => {
   console.log(data);
-  const response = await instance.patch('users/me', data);
+  const response = await instance.patch<UserData>('users/me', data);
   return response.data;
 };

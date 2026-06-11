@@ -43,6 +43,8 @@ const SignInPage = () => {
             type="email"
             name="email"
             className={css.input}
+            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+            title="Enter an email in the format name@example.com"
             required
           />
         </div>
@@ -55,6 +57,7 @@ const SignInPage = () => {
             name="password"
             className={css.input}
             required
+            minLength={6}
           />
         </div>
 

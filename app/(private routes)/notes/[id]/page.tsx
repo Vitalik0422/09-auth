@@ -1,4 +1,4 @@
-import { fetchNoteById } from '@/lib/api/api';
+import { fetchNoteById } from '@/lib/api/serverApi';
 import NoteDetailsClient from './NoteDetails.client';
 import {
   dehydrate,
@@ -35,7 +35,7 @@ export const generateMetadata = async ({
       description,
       type: 'website',
       siteName: 'NoteHub',
-      url: `/notes/${id}`,
+      url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/notes/${id}`,
       images: [
         {
           url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',

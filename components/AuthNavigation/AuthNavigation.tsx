@@ -27,12 +27,11 @@ const AuthNavigation = () => {
     <>
       {isAuthenticated ? (
         <>
-          <li className={css.navigationItem}>
-            <Link
-              href="/profile"
-              prefetch={false}
-              className={css.navigationLink}
-            >
+          <li>
+            <Link href="/notes/filter/all">Notes</Link>
+          </li>
+          <li>
+            <Link href="/profile" prefetch={false}>
               Profile
             </Link>
           </li>
@@ -46,7 +45,7 @@ const AuthNavigation = () => {
         </>
       ) : (
         <>
-          <li className={css.navigationItem}>
+          <li>
             <Link
               href="/sign-in"
               prefetch={false}
@@ -56,7 +55,7 @@ const AuthNavigation = () => {
             </Link>
           </li>
 
-          <li className={css.navigationItem}>
+          <li>
             <Link
               href="/sign-up"
               prefetch={false}
