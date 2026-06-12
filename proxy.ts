@@ -56,14 +56,18 @@ export async function proxy(request: NextRequest) {
     if (isPublicRoute) {
       return NextResponse.next();
     }
+
     if (isPrivateRoute) {
       return NextResponse.redirect(new URL('/sign-in', request.url));
     }
   }
+
   if (isPublicRoute) {
     return NextResponse.redirect(new URL('/', request.url));
   }
-  return NextResponse.next();
+  if (isPrivateRoute) {
+    return NextResponse.next();
+  }
 }
 
 export const config = {
