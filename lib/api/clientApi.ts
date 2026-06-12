@@ -84,7 +84,6 @@ export const getMe = async (): Promise<UserData> => {
   return response.data;
 };
 export const updateMe = async (data: UpdateUserName): Promise<UserData> => {
-  console.log(data);
   const response = await instance.patch<UserData>('users/me', data);
   return response.data;
 };

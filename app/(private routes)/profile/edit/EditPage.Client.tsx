@@ -28,7 +28,6 @@ const EditPage = () => {
   const handleUpdateUser = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    console.log(formData);
     const newUserName = formData.get('username') as string;
     mutate({
       username: newUserName.trim(),

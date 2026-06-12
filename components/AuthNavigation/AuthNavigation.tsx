@@ -15,7 +15,7 @@ const AuthNavigation = () => {
   const { mutate } = useMutation({
     mutationFn: logout,
     onSuccess: () => {
-      router.push('/');
+      router.push('/sign-in');
       clearIsAuthenticated();
     },
   });
