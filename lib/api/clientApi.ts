@@ -64,26 +64,26 @@ export const deleteNote = async (id: string): Promise<Note> => {
 export const registerUser = async (
   params: UserRegisterData,
 ): Promise<UserData> => {
-  const response = await instance.post<UserData>('auth/register', params);
+  const response = await instance.post<UserData>('/auth/register', params);
   return response.data;
 };
 export const login = async (loginData: UserRegisterData): Promise<UserData> => {
-  const response = await instance.post<UserData>('auth/login', loginData);
+  const response = await instance.post<UserData>('/auth/login', loginData);
   return response.data;
 };
 export const logout = async (): Promise<string> => {
-  const response = await instance.post<string>('auth/logout');
+  const response = await instance.post<string>('/auth/logout');
   return response.data;
 };
 export const checkSession = async (): Promise<CheckSession> => {
-  const response = await instance.get<CheckSession>('auth/session');
+  const response = await instance.get<CheckSession>('/auth/session');
   return response.data;
 };
 export const getMe = async (): Promise<UserData> => {
-  const response = await instance.get<UserData>('users/me');
+  const response = await instance.get<UserData>('/users/me');
   return response.data;
 };
 export const updateMe = async (data: UpdateUserName): Promise<UserData> => {
-  const response = await instance.patch<UserData>('users/me', data);
+  const response = await instance.patch<UserData>('/users/me', data);
   return response.data;
 };

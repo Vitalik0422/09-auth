@@ -4,14 +4,17 @@ import css from './SignUp.module.css';
 import { useMutation } from '@tanstack/react-query';
 import useErrorApi from '@/hooks/useErrorApi';
 import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/lib/store/authStore';
 
 const SignUp = () => {
   const router = useRouter();
+  const setUser = useAuthStore((state) => state.setUser);
   const { handleError, errorMessage } = useErrorApi();
   const { mutate } = useMutation({
     mutationFn: registerUser,
-    onSuccess: () => {
+    onSuccess: (user) => {
       router.push('/profile');
+      setUser(user);
     },
     onError: (error) => {
       handleError(error);
